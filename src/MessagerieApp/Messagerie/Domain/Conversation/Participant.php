@@ -8,7 +8,7 @@ namespace MessagerieApp\Messagerie\Domain\Conversation;
  * Class Partipant
  * @package MessagerieApp\Messagerie\Domain\Conversation
  */
-class Partipant extends Proprietaire
+class Participant extends Proprietaire
 {
 
 }

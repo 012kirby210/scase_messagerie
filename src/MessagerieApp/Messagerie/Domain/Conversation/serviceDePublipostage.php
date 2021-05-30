@@ -25,7 +25,7 @@ class serviceDePublipostage
 	 * @param Conversation $conversation
 	 * @param string $contenuMessage
 	 */
-	public function envoieUnMessage(Partipant $participant, Conversation $conversation, string $contenuMessage)
+	public function envoieUnMessage(Participant $participant, Conversation $conversation, string $contenuMessage)
 	{
 		$this->verifieQueLUtilisateurParticipeALaConversation($participant,$conversation);
 		$this->conversationRepository->trouveConversation($conversation)->ajouteMessage($participant,

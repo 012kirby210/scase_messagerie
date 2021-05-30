@@ -23,7 +23,7 @@ class Conversation
 	{
 		$this->conversationId = $conversationId;
 		$this->proprietaire = $proprietaire;
-		$this->dateDeCreate = $dateDeCreation;
+		$this->dateDeCreation = $dateDeCreation;
 		$this->messages = $messages;
 		$this->participants = $participants;
 	}
@@ -31,7 +31,7 @@ class Conversation
 	public static function create(
 		ConversationId $conversationId,
 		Proprietaire $proprietaire,
-		\DateTimeImmutable $dateDeCreation,
+		\DateTimeImmutable $dateDeCreation = null,
 		array $messages,
 		array $participants
 	) :self
@@ -39,12 +39,23 @@ class Conversation
 		// s'il y a des règles inhérentes à l'aggrégation, les définir ici
 		// et générer des exceptions spécifiques pour traitements particuliers.
 
-		return new self($conversationId,$proprietaire,$dateDeCreation,$messages,$participants);
+		return new self($conversationId,$proprietaire,
+			$dateDeCreation?? new \DateTimeImmutable(),$messages,$participants);
 	}
 
 	public function getParticipants():array
 	{
 		return $this->participants;
+	}
+
+	public function getProprietaire():Proprietaire
+	{
+		return $this->proprietaire;
+	}
+
+	public function getId(): string
+	{
+		return $this->conversationId->toString();
 	}
 
 

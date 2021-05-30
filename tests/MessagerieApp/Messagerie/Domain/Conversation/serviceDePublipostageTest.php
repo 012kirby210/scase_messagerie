@@ -6,7 +6,7 @@ namespace App\Tests\MessagerieApp\Messagerie\Domain\Conversation;
 use MessagerieApp\Messagerie\Domain\conversation\Conversation;
 use MessagerieApp\Messagerie\Domain\conversation\ConversationId;
 use MessagerieApp\Messagerie\Domain\Conversation\Proprietaire;
-use MessagerieApp\Messagerie\Domain\Conversation\Partipant;
+use MessagerieApp\Messagerie\Domain\Conversation\Participant;
 use MessagerieApp\Messagerie\Domain\Conversation\serviceDePublipostage;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -18,7 +18,7 @@ class serviceDePublipostageTest extends KernelTestCase
 		$conversation = Conversation::create(ConversationId::generate(),
 			Proprietaire::create('proprietaire','idProprietaire'),
 			new \DateTimeImmutable());
-		$participant = Partipant::create('utilisateur1','identifiant');
+		$participant = Participant::create('utilisateur1','identifiant');
 		$conversation->ajouteParticipant($participant);
 
 		$conversationRepository = new ConversationRepositoryMemoire();

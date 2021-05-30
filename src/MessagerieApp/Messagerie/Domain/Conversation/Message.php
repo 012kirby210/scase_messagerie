@@ -1,7 +1,8 @@
 <?php
 
-
 namespace MessagerieApp\Messagerie\Domain\Conversation;
+
+use \DateTimeImmutable;
 
 /**
  * Un message publiable/publié dans une conversation
@@ -21,13 +22,13 @@ class Message
 	 * @param string $username
 	 * //
 	 * @param string $contenuMessage
-	 * @param \DateTimeImmutable $dateCreation
+	 * @param DateTimeImmutable $dateCreation
 	 */
 	private function __construct(MessageId $messageId,
 															 string $participantId,
 															 string $username,
 															 string $contenuMessage,
-															 \DateTimeImmutable $dateCreation)
+															 DateTimeImmutable $dateCreation)
 	{
 		$this->messageId = $messageId;
 		$this->participantId = $participantId;
@@ -36,10 +37,11 @@ class Message
 		$this->dateCreation = $dateCreation;
 	}
 
-	public function create(MessageId $messageId,
-												 string $participantId,
-												 string $username,
-												 string $contenuMessage) :self
+	public static function create(MessageId $messageId,
+												 				string $participantId,
+												 				string $username,
+																string $contenuMessage,
+																DateTimeImmutable $dateTime = null) :self
 	{
 		// !TODO définir les règles sur les aggrégats message.
 
@@ -47,7 +49,7 @@ class Message
 			$participantId,
 			$username,
 			$contenuMessage,
-			new \DateTimeImmutable());
+			$dateTime ?? new \DateTimeImmutable());
 	}
 
 	public function getContenuMessage():string
