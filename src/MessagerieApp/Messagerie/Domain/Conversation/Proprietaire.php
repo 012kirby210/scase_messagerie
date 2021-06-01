@@ -5,8 +5,8 @@ namespace MessagerieApp\Messagerie\Domain\Conversation;
 
 class Proprietaire
 {
-	private $username;
-	private $id;
+	protected $username;
+	protected $id;
 
 	private function __construct(string $username,
 															 string $id)
@@ -15,6 +15,11 @@ class Proprietaire
 		$this->id = $id;
 	}
 
+	/**
+	 * @param string $username
+	 * @param string $id
+	 * @return Proprietaire
+	 */
 	public static function create(string $username,
 																string $id)
 	{

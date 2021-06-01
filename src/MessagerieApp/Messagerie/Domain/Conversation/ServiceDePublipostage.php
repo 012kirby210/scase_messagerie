@@ -10,9 +10,12 @@ use MessagerieApp\Messagerie\Domain\Conversation\Exception\ParticipantInconnuALa
  * Class serviceDePublipostage
  * @package MessagerieApp\Messagerie\Domain\Conversation
  */
-class serviceDePublipostage
+class ServiceDePublipostage
 {
-	private ConversationRepository $conversationRepository;
+	/**
+	 * @var ConversationRepository $conversationRepository
+	 */
+	private $conversationRepository;
 
 	public function __construct(ConversationRepository $conversationRepository)
 	{
@@ -28,6 +31,7 @@ class serviceDePublipostage
 	public function envoieUnMessage(Participant $participant, Conversation $conversation, string $contenuMessage)
 	{
 		$this->verifieQueLUtilisateurParticipeALaConversation($participant,$conversation);
+
 		$this->conversationRepository->trouveConversation($conversation)->ajouteMessage($participant,
 			Message::create(MessageId::generate(),
 			$participant->getUserid(),

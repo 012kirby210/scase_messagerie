@@ -7,7 +7,7 @@ use MessagerieApp\Messagerie\Domain\conversation\Conversation;
 use MessagerieApp\Messagerie\Domain\conversation\ConversationId;
 use MessagerieApp\Messagerie\Domain\Conversation\Proprietaire;
 use MessagerieApp\Messagerie\Domain\Conversation\Participant;
-use MessagerieApp\Messagerie\Domain\Conversation\serviceDePublipostage;
+use MessagerieApp\Messagerie\Domain\Conversation\ServiceDePublipostage;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class serviceDePublipostageTest extends KernelTestCase
@@ -24,7 +24,7 @@ class serviceDePublipostageTest extends KernelTestCase
 		$conversationRepository = new ConversationRepositoryMemoire();
 		$conversationRepository->enregistre($conversation);
 
-		$service = new serviceDePublipostage($conversationRepository);
+		$service = new ServiceDePublipostage($conversationRepository);
 		$contenuDuMessage = "je suis un message";
 
 		$service->envoieUnMessage($participant,$conversation,$contenuDuMessage);
